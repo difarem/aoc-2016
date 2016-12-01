@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
-	"strings"
 	"strconv"
+	"strings"
 )
 
 const (
@@ -16,28 +16,29 @@ const (
 )
 
 func left(d int) int {
-	return (d+1)%4
+	return (d + 1) % 4
 }
 
 func right(d int) int {
-	return (d+3)%4
+	return (d + 3) % 4
 }
 
 func advance(d int, q int, x int, y int) (x2, y2 int) {
 	switch d {
 	case N:
-		return x, y-q
+		return x, y - q
 	case W:
-		return x+q, y
+		return x + q, y
 	case S:
-		return x, y+q
+		return x, y + q
 	case E:
-		return x-q, y
+		return x - q, y
 	}
 	return x, y
 }
 
 var visited = make(map[int]map[int]int)
+
 func visit(x, y int) {
 	if visited[x] == nil {
 		visited[x] = make(map[int]int)
@@ -46,8 +47,11 @@ func visit(x, y int) {
 }
 
 func abs(x int) int {
-	if (x < 0) { return -x
-	} else { return x }
+	if x < 0 {
+		return -x
+	} else {
+		return x
+	}
 }
 
 func main() {
@@ -61,7 +65,7 @@ func main() {
 	for _, direction := range directions {
 		d := direction[0]
 		n, _ := strconv.Atoi(direction[1:])
-		
+
 		if d == 'R' {
 			facing = right(facing)
 		} else {
