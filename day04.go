@@ -1,24 +1,25 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
-	"strconv"
 	"regexp"
 	"sort"
+	"strconv"
 )
 
 var re = regexp.MustCompile(`([a-z\-]*)-([0-9]*)\[([a-z]*)\]`)
 
 type letter struct {
-	letter rune
+	letter   rune
 	quantity int
 }
 
 // letter sorter
 type letters []letter
-func (l letters) Len() int { return len(l) }
+
+func (l letters) Len() int      { return len(l) }
 func (l letters) Swap(i, j int) { l[i], l[j] = l[j], l[i] }
 func (l letters) Less(i, j int) bool {
 	if l[i].quantity == l[j].quantity {
@@ -33,11 +34,11 @@ func main() {
 	for scanner.Scan() {
 		roomStr := scanner.Text()
 		result := re.FindAllStringSubmatch(roomStr, -1)
-		
+
 		roomName := result[0][1]
 		sectorID, _ := strconv.Atoi(result[0][2])
 		checksum := result[0][3]
-		
+
 		// find the five most common letters
 		var lts letters
 		ltsm := make(map[rune]int)
@@ -47,7 +48,7 @@ func main() {
 					lts[i].quantity++
 				} else {
 					ltsm[r] = len(lts)
-					lts = append(lts, letter{letter:r, quantity:1})
+					lts = append(lts, letter{letter: r, quantity: 1})
 				}
 			}
 		}
@@ -56,7 +57,7 @@ func main() {
 		for i := 0; i < 5; i++ {
 			checksum2[i] = byte(lts[i].letter)
 		}
-		
+
 		if checksum == string(checksum2) {
 			fmt.Println(roomName, "is real")
 			sum += sectorID
