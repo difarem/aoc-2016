@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
-	"regexp"
-	"os"
 	"bufio"
+	"fmt"
+	"os"
+	"regexp"
 	"strconv"
 )
 
@@ -17,7 +17,7 @@ func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
 		op := scanner.Text()
-		
+
 		if rect := opRect.FindStringSubmatch(op); rect != nil {
 			w, _ := strconv.Atoi(rect[1])
 			h, _ := strconv.Atoi(rect[2])

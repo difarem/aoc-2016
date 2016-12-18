@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
 )
 
@@ -17,11 +17,11 @@ func main() {
 		for i := range ip {
 			if ip[i] == '[' || ip[i] == ']' {
 				seq = append(seq, ip[s:i])
-				s = i+1
+				s = i + 1
 			}
 		}
 		seq = append(seq, ip[s:])
-		
+
 		// iterate through all sequences to find ABAs and BABs
 		var aba []string
 		var bab []string
@@ -51,7 +51,8 @@ func main() {
 				}
 			}
 		}
-		end: if found {
+	end:
+		if found {
 			fmt.Println(ip, "supports SSL")
 			count++
 		} else {

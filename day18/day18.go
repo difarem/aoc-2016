@@ -6,7 +6,7 @@ import (
 
 const (
 	T byte = '^'
-	S = '.'
+	S      = '.'
 )
 
 func isTrap(l, c, r byte) bool {
@@ -37,12 +37,12 @@ func main() {
 			st++
 		}
 	}
-	
+
 	for i := 1; i < rows; i++ {
 		var currLine []byte
 		for j := range lastLine {
 			var left, right byte
-			
+
 			if j == 0 {
 				left = S
 			} else {
@@ -53,7 +53,7 @@ func main() {
 			} else {
 				right = lastLine[j+1]
 			}
-			
+
 			if isTrap(left, lastLine[j], right) {
 				currLine = append(currLine, T)
 			} else {

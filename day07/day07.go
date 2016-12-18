@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
 )
 
@@ -21,7 +21,7 @@ func main() {
 			}
 		}
 		seq = append(seq, ip[s:])
-		
+
 		// iterate through all sequences to find ABBAs
 		hasAbba := false
 		for i := range seq {
@@ -41,7 +41,8 @@ func main() {
 				last[0], last[1], last[2] = last[1], last[2], seq[i][j]
 			}
 		}
-		end: if hasAbba {
+	end:
+		if hasAbba {
 			fmt.Println(ip, "supports TLS")
 			count++
 		} else {

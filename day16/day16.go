@@ -25,18 +25,18 @@ func main() {
 	fmt.Scanln(&diskLen)
 	var initialState string
 	fmt.Scanln(&initialState)
-	
+
 	state := []byte(initialState)
 	for len(state) < diskLen {
 		l := len(state)
 		state = append(state, '0')
-		for i := l-1; i >= 0; i-- {
+		for i := l - 1; i >= 0; i-- {
 			if state[i] == '0' {
 				state = append(state, '1')
 			} else {
 				state = append(state, '0')
 			}
-		}		
+		}
 	}
 	state = state[:diskLen]
 	sum := checksum(state)

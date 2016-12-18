@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
 )
 
@@ -19,7 +19,7 @@ func main() {
 				freq[i] = make(map[byte]int)
 			}
 		}
-		
+
 		for i := 0; i < l; i++ {
 			freq[i][text[i]]++
 		}
